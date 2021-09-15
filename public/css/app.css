@@ -6,6 +6,40 @@ html, body {
   background-color: #DCDCDC;
 }
 
+header {
+  display: flex;
+  flex-direction: row;
+}
+header :first-child {
+  margin-left: auto;
+}
+header :last-child {
+  margin-right: 10px;
+}
+header .header-form {
+  position: absolute;
+  right: 0;
+  width: 25vw;
+  padding: 5px;
+  background-color: #DCDCDC;
+  border: 1px solid black;
+}
+header .header-form input, header .header-form label {
+  width: 100%;
+}
+header .header-form input {
+  margin: auto;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+button {
+  font-weight: bolder;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+}
+
 main {
   height: 100%;
 }
@@ -36,6 +70,12 @@ main {
   font-size: 3rem;
   width: 1em;
 }
+#list .list-item .item-name {
+  font-size: 2rem;
+  overflow-x: scroll;
+}
 #list .list-item .item-price {
+  overflow-x: scroll;
+  font-size: 2rem;
   width: 3em;
 }

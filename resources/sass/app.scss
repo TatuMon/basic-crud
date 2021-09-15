@@ -8,6 +8,44 @@ html, body{
     background-color: $background;
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+    
+    :first-child{
+        margin-left: auto;
+    }
+    :last-child{
+        margin-right: 10px;
+    }
+
+    .header-form{
+        position: absolute;
+        right: 0;
+        width: 25vw;
+        padding: 5px;
+        background-color: $background;
+        border: 1px solid black;
+
+        input, label{
+            width: 100%;
+        }
+
+        input{
+            margin: auto;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+    }
+}
+
+button{
+    font-weight: bolder;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+}
+
 main{
     height: 100%;
 }
@@ -41,7 +79,14 @@ main{
             width: 1em;
         }
 
+        .item-name{
+            font-size: 2rem;
+            overflow-x: scroll;
+        }
+
         .item-price{
+            overflow-x: scroll;
+            font-size: 2rem;
             width: 3em;
         }
     }
