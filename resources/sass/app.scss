@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+@import "_variables";
+
+html, body{
+    margin: 0;
+    font-family: 'Sen', sans-serif;
+    color: $font-color;
+    background-color: $background;
+}
+
+main{
+    height: 100%;
+}
+
+.no-space-table{
+    //border-spacing: 0;
+    //border-collapse: collapse;
+}
+
+#list{
+    width: 80vw;
+    margin: auto;
+    border-collapse: separate;
+
+    .list-item{
+        background-color: $item-background;
+        text-align: center;
+
+        :first-child{
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        :last-child{
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px; 
+        }
+
+        .item-status{
+            padding: 10px;
+            font-size: 3rem;
+            width: 1em;
+        }
+
+        .item-price{
+            width: 3em;
+        }
+    }
+}
