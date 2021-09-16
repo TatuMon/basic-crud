@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function create(){
         $data = request()->validate([
             'name' => 'required',
-            'price' => 'required|numeric'
+            'price' => 'nullable|numeric'
         ]);
 
         $item = item::create([

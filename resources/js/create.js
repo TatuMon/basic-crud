@@ -7,13 +7,15 @@ $('#create-form').on('submit', function(e){
         method: 'POST',
         data : form.serialize(),
         success : function(response){
+            $("input[name='price']").val('');
             response = JSON.parse(response);
+            console.log(typeof response.price);
 
             $('#list').prepend(`
                 <tr class="list-item" data-item="${response.id}">
-                    <td class="item-status ${response.status}"><i class="fas fa-clock"></i></td>
+                    <td class="item-status" data-status="${response.status}"><i class="fas fa-clock"></i></td>
                     <td class="item-name">${response.name}</td>
-                    <td class="item-price">$${response.price}</td>
+                    <td class="item-price">${response.price ? '$'+parseFloat(response.price).toFixed(2) : ''}</td>
                     <td class="item-delete"><i class="far fa-trash-alt delete-item"></i></td>
                 </tr>
             `);

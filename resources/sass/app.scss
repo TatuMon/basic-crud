@@ -79,15 +79,15 @@ main{
             width: 1em;
         }
 
-        .complete{
+        td[data-status='complete']{
             color: $success;
         }
 
-        .pending{
+        td[data-status='pending']{
             color: $alert;
         }
 
-        .cancelled{
+        td[data-status='cancelled']{
             color: $danger;
         }
 

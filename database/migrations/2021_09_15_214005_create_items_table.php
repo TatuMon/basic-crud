@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('name');
-            $table->decimal('price', $precision = 8, $scale = 2);
+            $table->decimal('price', $precision = 8, $scale = 2)->nullable();
             $table->enum('status', ['complete', 'pending', 'cancelled'])->default('pending');
             $table->timestamps();
         });

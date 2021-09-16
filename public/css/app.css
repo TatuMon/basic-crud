@@ -70,13 +70,13 @@ main {
   font-size: 2rem;
   width: 1em;
 }
-#list .list-item .complete {
+#list .list-item td[data-status=complete] {
   color: #5CB85C;
 }
-#list .list-item .pending {
+#list .list-item td[data-status=pending] {
   color: #EED202;
 }
-#list .list-item .cancelled {
+#list .list-item td[data-status=cancelled] {
   color: #D9534F;
 }
 #list .list-item .item-name {

@@ -2062,13 +2062,13 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./show-status */ "./resources/js/show-status.js");
+
 __webpack_require__(/*! ./create */ "./resources/js/create.js");
 
 __webpack_require__(/*! ./delete */ "./resources/js/delete.js");
 
 __webpack_require__(/*! ./change-status */ "./resources/js/change-status.js");
-
-__webpack_require__(/*! ./show-status */ "./resources/js/show-status.js");
 
 /***/ }),
 
@@ -2109,7 +2109,59 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \***************************************/
 /***/ (() => {
 
+function updateStatusIcon() {
+  var complete = "<i class=\"fas fa-check\"></i>";
+  var pending = "<i class=\"fas fa-clock\"></i>";
+  var cancelled = "<i class=\"fas fa-times-circle\"></i>";
+  var unknown = "<i class=\"fas fa-question-circle\"></i>";
+  $('.list-item').each(function () {
+    var itemStatusContainer = $(this).find('.item-status');
+    var itemStatus = itemStatusContainer.attr('data-status');
 
+    switch (itemStatus) {
+      case 'complete':
+        itemStatusContainer.html(complete);
+        break;
+
+      case 'pending':
+        itemStatusContainer.html(pending);
+        break;
+
+      case 'cancelled':
+        itemStatusContainer.html(cancelled);
+        break;
+
+      default:
+        itemStatusContainer.html(unknown);
+    }
+  });
+}
+
+$('.item-status').on('click', function () {
+  var itemStatus = $(this).attr('data-status');
+
+  switch (itemStatus) {
+    case 'complete':
+      $(this).attr('data-status', 'cancelled');
+      updateStatusIcon();
+      break;
+
+    case 'pending':
+      $(this).attr('data-status', 'complete');
+      updateStatusIcon();
+      break;
+
+    case 'cancelled':
+      $(this).attr('data-status', 'pending');
+      updateStatusIcon();
+      break;
+
+    default:
+      $(this).attr('data-status', 'pending');
+      updateStatusIcon();
+      break;
+  }
+});
 
 /***/ }),
 
@@ -2119,6 +2171,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \********************************/
 /***/ (() => {
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 $('#create-form').on('submit', function (e) {
   e.preventDefault();
   var form = $(this);
@@ -2127,8 +2181,10 @@ $('#create-form').on('submit', function (e) {
     method: 'POST',
     data: form.serialize(),
     success: function success(response) {
+      $("input[name='price']").val('');
       response = JSON.parse(response);
-      $('#list').prepend("\n                <tr class=\"list-item\" data-item=\"".concat(response.id, "\">\n                    <td class=\"item-status ").concat(response.status, "\"><i class=\"fas fa-clock\"></i></td>\n                    <td class=\"item-name\">").concat(response.name, "</td>\n                    <td class=\"item-price\">$").concat(response.price, "</td>\n                    <td class=\"item-delete\"><i class=\"far fa-trash-alt delete-item\"></i></td>\n                </tr>\n            "));
+      console.log(_typeof(response.price));
+      $('#list').prepend("\n                <tr class=\"list-item\" data-item=\"".concat(response.id, "\">\n                    <td class=\"item-status\" data-status=\"").concat(response.status, "\"><i class=\"fas fa-clock\"></i></td>\n                    <td class=\"item-name\">").concat(response.name, "</td>\n                    <td class=\"item-price\">").concat(response.price ? '$' + parseFloat(response.price).toFixed(2) : '', "</td>\n                    <td class=\"item-delete\"><i class=\"far fa-trash-alt delete-item\"></i></td>\n                </tr>\n            "));
       $('.delete-item').on('click', function () {
         var itemContainer = $(this).parents('tr.list-item');
         var itemID = itemContainer.attr('data-item');
@@ -2184,23 +2240,36 @@ $('.delete-item').on('click', function () {
   \*************************************/
 /***/ (() => {
 
-$(function () {
+function updateStatusIcon() {
   var complete = "<i class=\"fas fa-check\"></i>";
   var pending = "<i class=\"fas fa-clock\"></i>";
   var cancelled = "<i class=\"fas fa-times-circle\"></i>";
+  var unknown = "<i class=\"fas fa-question-circle\"></i>";
   $('.list-item').each(function () {
-    console.log(':(');
+    var itemStatusContainer = $(this).find('.item-status');
+    var itemStatus = itemStatusContainer.attr('data-status');
 
-    if (!$(this).find('.complete').length == 0) {
-      $(this).find('.complete').html(complete);
-      return;
-    } else if (!$(this).find('.pending').length == 0) {
-      $(this).find('.pending').html(pending);
-      return;
-    } else if (!$(this).find('.cancelled').length == 0) {
-      $(this).find('.cancelled').html(cancelled);
+    switch (itemStatus) {
+      case 'complete':
+        itemStatusContainer.html(complete);
+        break;
+
+      case 'pending':
+        itemStatusContainer.html(pending);
+        break;
+
+      case 'cancelled':
+        itemStatusContainer.html(cancelled);
+        break;
+
+      default:
+        itemStatusContainer.html(unknown);
     }
   });
+}
+
+$(function () {
+  updateStatusIcon();
 });
 
 /***/ }),
