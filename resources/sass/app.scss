@@ -48,10 +48,33 @@ button{
 
 main{
     height: 100%;
+    width: 100%;
 }
 
 #title{
     text-align: center;
+}
+
+#create-form{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    input{
+        margin: 5px;
+        font-size: 1.5rem;
+    }
+
+    input[type="text"], input[type="number"]{
+        background: none;
+        border: none;
+        border-bottom: 5px solid black;
+    }
+
+    input[type="submit"]{
+        background: none;
+        border: 2px solid black
+    }
 }
 
 #list{
@@ -107,9 +130,19 @@ main{
             font-size: 2rem;
         }
     }
+
+    .error-msg{
+        color: $danger;
+    }
 }
 
 @media(max-width: 1000px){
+    #create-form{
+        input{
+            width: 33vw;
+        }
+    }
+
     #list{
         width: 100vw;
     }

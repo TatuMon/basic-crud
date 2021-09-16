@@ -42,10 +42,30 @@ button {
 
 main {
   height: 100%;
+  width: 100%;
 }
 
 #title {
   text-align: center;
+}
+
+#create-form {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+#create-form input {
+  margin: 5px;
+  font-size: 1.5rem;
+}
+#create-form input[type=text], #create-form input[type=number] {
+  background: none;
+  border: none;
+  border-bottom: 5px solid black;
+}
+#create-form input[type=submit] {
+  background: none;
+  border: 2px solid black;
 }
 
 #list {
@@ -92,8 +112,15 @@ main {
   width: 2em;
   font-size: 2rem;
 }
+#list .error-msg {
+  color: #D9534F;
+}
 
 @media (max-width: 1000px) {
+  #create-form input {
+    width: 33vw;
+  }
+
   #list {
     width: 100vw;
   }
