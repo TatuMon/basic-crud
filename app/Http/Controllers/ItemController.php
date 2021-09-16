@@ -8,9 +8,15 @@ use App\Models\item;
 class ItemController extends Controller
 {
     public function read(){
-        return view('welcome', [
-            'items' => item::latest('updated_at')->orderBy('id', 'desc')->get()
-        ]);
+        if(auth()->check()){
+            return view('welcome', [
+                'items' => item::latest('updated_at')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get()
+            ]);
+        } else {
+            return view('welcome', [
+                'items' => []
+            ]);
+        }
     }
 
     public function create(){
