@@ -70,6 +70,15 @@ main {
   font-size: 2rem;
   width: 1em;
 }
+#list .list-item .complete {
+  color: #5CB85C;
+}
+#list .list-item .pending {
+  color: #EED202;
+}
+#list .list-item .cancelled {
+  color: #D9534F;
+}
 #list .list-item .item-name {
   font-size: 1.5rem;
   overflow-x: auto;
@@ -78,4 +87,14 @@ main {
   overflow-x: auto;
   font-size: 1.5rem;
   width: 3em;
+}
+#list .list-item .item-delete {
+  width: 2em;
+  font-size: 2rem;
+}
+
+@media (max-width: 1000px) {
+  #list {
+    width: 100vw;
+  }
 }

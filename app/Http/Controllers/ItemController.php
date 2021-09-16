@@ -22,9 +22,10 @@ class ItemController extends Controller
         item::create([
             'name' => $data['name'],
             'price' => $data['price'],
+            'status' => 2,
             'user_id' => auth()->user()->id
         ]);
 
-        return json_encode(['name' => $data['name'], 'price' => $data['price']]);
+        return json_encode(['name' => $data['name'], 'price' => $data['price'], 'status' => 'pending']);
     }
 }

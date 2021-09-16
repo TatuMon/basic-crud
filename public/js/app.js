@@ -2062,7 +2062,9 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./create.js */ "./resources/js/create.js");
+__webpack_require__(/*! ./show-status */ "./resources/js/show-status.js");
+
+__webpack_require__(/*! ./create */ "./resources/js/create.js");
 
 /***/ }),
 
@@ -2112,7 +2114,34 @@ $('#create-form').on('submit', function (e) {
     data: form.serialize(),
     success: function success(response) {
       response = JSON.parse(response);
-      $('#list').prepend("\n                <tr class=\"list-item\">\n                    <td class=\"item-status\"><i class=\"fas fa-check\"></i></td>\n                    <td class=\"item-name\">".concat(response.name, "</td>\n                    <td class=\"item-price\">$").concat(response.price, "</td>\n                </tr>\n            "));
+      $('#list').prepend("\n                <tr class=\"list-item\">\n                    <td class=\"item-status ".concat(response.status, "\"><i class=\"fas fa-clock\"></i></td>\n                    <td class=\"item-name\">").concat(response.name, "</td>\n                    <td class=\"item-price\">$").concat(response.price, "</td>\n                    <td class=\"item-delete\"><i class=\"far fa-trash-alt delete-item\"></i></td>\n                </tr>\n            "));
+    }
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/show-status.js":
+/*!*************************************!*\
+  !*** ./resources/js/show-status.js ***!
+  \*************************************/
+/***/ (() => {
+
+$(function () {
+  var complete = "<i class=\"fas fa-check\"></i>";
+  var pending = "<i class=\"fas fa-clock\"></i>";
+  var cancelled = "<i class=\"fas fa-times-circle\"></i>";
+  $('.list-item').each(function () {
+    console.log(':(');
+
+    if (!$(this).find('.complete').length == 0) {
+      $(this).find('.complete').html(complete);
+      return;
+    } else if (!$(this).find('.pending').length == 0) {
+      $(this).find('.pending').html(pending);
+      return;
+    } else if (!$(this).find('.cancelled').length == 0) {
+      $(this).find('.cancelled').html(cancelled);
     }
   });
 });

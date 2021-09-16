@@ -11,9 +11,10 @@ $('#create-form').on('submit', function(e){
 
             $('#list').prepend(`
                 <tr class="list-item">
-                    <td class="item-status"><i class="fas fa-check"></i></td>
+                    <td class="item-status ${response.status}"><i class="fas fa-clock"></i></td>
                     <td class="item-name">${response.name}</td>
                     <td class="item-price">$${response.price}</td>
+                    <td class="item-delete"><i class="far fa-trash-alt delete-item"></i></td>
                 </tr>
             `);
         }
