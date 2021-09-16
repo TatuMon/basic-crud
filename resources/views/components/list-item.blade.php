@@ -1,6 +1,6 @@
 @props(['item'])
 
-<tr class="list-item" id="item-{{ $item->id }}">
+<tr class="list-item" data-item="{{ $item->id }}">
     <td class="item-status {{ $item->status }}"></td>
     <td class="item-name">{{ $item->name }}</td>
     <td class="item-price">{{ $item->price }}</td>

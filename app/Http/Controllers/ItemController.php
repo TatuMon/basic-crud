@@ -19,13 +19,13 @@ class ItemController extends Controller
             'price' => 'required|numeric'
         ]);
 
-        item::create([
+        $item = item::create([
             'name' => $data['name'],
             'price' => $data['price'],
             'status' => 2,
             'user_id' => auth()->user()->id
         ]);
 
-        return json_encode(['name' => $data['name'], 'price' => $data['price'], 'status' => 'pending']);
+        return json_encode(['id' => $item->id, 'name' => $item->name, 'price' => $item->price, 'status' => 'pending']);
     }
 }
