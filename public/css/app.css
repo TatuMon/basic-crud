@@ -72,10 +72,10 @@ main {
 }
 #list .list-item .item-name {
   font-size: 2rem;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 #list .list-item .item-price {
-  overflow-x: scroll;
+  overflow-x: auto;
   font-size: 2rem;
   width: 3em;
 }

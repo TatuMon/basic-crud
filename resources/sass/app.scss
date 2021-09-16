@@ -81,11 +81,11 @@ main{
 
         .item-name{
             font-size: 2rem;
-            overflow-x: scroll;
+            overflow-x: auto;
         }
 
         .item-price{
-            overflow-x: scroll;
+            overflow-x: auto;
             font-size: 2rem;
             width: 3em;
         }
