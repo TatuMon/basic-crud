@@ -17,6 +17,21 @@ $('#create-form').on('submit', function(e){
                     <td class="item-delete"><i class="far fa-trash-alt delete-item"></i></td>
                 </tr>
             `);
+
+            $('.delete-item').on('click', function(){
+                let itemContainer = $(this).parents('tr.list-item');
+                let itemID = itemContainer.attr('data-item');
+            
+                $.ajax({
+                    url : '/delete',
+                    method : 'POST',
+                    headers : { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
+                    data : { id : itemID },
+                    success : function(){
+                        itemContainer.remove();
+                    }
+                })
+            });
         }
     });
 });

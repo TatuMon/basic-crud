@@ -22,3 +22,4 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'destroy']);
 
 Route::post('/create', [ItemController::class, 'create']);
+Route::post('/delete', [ItemController::class, 'delete']);

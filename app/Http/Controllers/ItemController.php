@@ -28,4 +28,12 @@ class ItemController extends Controller
 
         return json_encode(['id' => $item->id, 'name' => $item->name, 'price' => $item->price, 'status' => 'pending']);
     }
+
+    public function delete(){
+        $data = request()->validate([
+            'id' => 'numeric|required'
+        ]);
+
+        item::findOrFail($data['id'])->delete();
+    }
 }
