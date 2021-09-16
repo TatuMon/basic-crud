@@ -7,6 +7,12 @@ use App\Models\item;
 
 class ItemController extends Controller
 {
+    public function read(){
+        return view('welcome', [
+            'items' => item::latest('updated_at')->orderBy('id', 'desc')->get()
+        ]);
+    }
+
     public function create(){
         $data = request()->validate([
             'name' => 'required',

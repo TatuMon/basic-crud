@@ -15,9 +15,7 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ItemController::class, 'read']);
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);

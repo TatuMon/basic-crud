@@ -9,7 +9,7 @@ $('#create-form').on('submit', function(e){
         success : function(response){
             response = JSON.parse(response);
 
-            $('#list').append(`
+            $('#list').prepend(`
                 <tr class="list-item">
                     <td class="item-status"><i class="fas fa-check"></i></td>
                     <td class="item-name">${response.name}</td>

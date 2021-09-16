@@ -2112,7 +2112,7 @@ $('#create-form').on('submit', function (e) {
     data: form.serialize(),
     success: function success(response) {
       response = JSON.parse(response);
-      $('#list').append("\n                <tr class=\"list-item\">\n                    <td class=\"item-status\"><i class=\"fas fa-check\"></i></td>\n                    <td class=\"item-name\">".concat(response.name, "</td>\n                    <td class=\"item-price\">$").concat(response.price, "</td>\n                </tr>\n            "));
+      $('#list').prepend("\n                <tr class=\"list-item\">\n                    <td class=\"item-status\"><i class=\"fas fa-check\"></i></td>\n                    <td class=\"item-name\">".concat(response.name, "</td>\n                    <td class=\"item-price\">$").concat(response.price, "</td>\n                </tr>\n            "));
     }
   });
 });

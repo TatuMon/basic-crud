@@ -1,5 +1,3 @@
-{{-- @props(['items']) --}}
-
 <x-layout>
     <h1 id="title">Your Grocery List</h1>
     @auth
@@ -11,7 +9,9 @@
         </form>
 
         <table id="list">
-            <x-list-item />
+            @foreach ($items as $item)
+                <x-list-item :item="$item" />
+            @endforeach
         </table>
     @else
         <!-- ADD TEMPORARY LIST IF NOT LOGGED IN -->
