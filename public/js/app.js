@@ -2062,6 +2062,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./create.js */ "./resources/js/create.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2092,6 +2094,28 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/create.js":
+/*!********************************!*\
+  !*** ./resources/js/create.js ***!
+  \********************************/
+/***/ (() => {
+
+$('#create-form').on('submit', function (e) {
+  e.preventDefault();
+  var form = $(this);
+  $.ajax({
+    url: '/create',
+    method: 'POST',
+    data: form.serialize(),
+    success: function success(response) {
+      response = JSON.parse(response);
+      $('#list').append("\n                <tr class=\"list-item\">\n                    <td class=\"item-status\"><i class=\"fas fa-check\"></i></td>\n                    <td class=\"item-name\">".concat(response.name, "</td>\n                    <td class=\"item-price\">$").concat(response.price, "</td>\n                </tr>\n            "));
+    }
+  });
+});
 
 /***/ }),
 

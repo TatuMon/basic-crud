@@ -15,10 +15,10 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user');
+            $table->foreignId('user_id');
             $table->string('name');
-            $table->integer('price');
-            $table->boolean('status');
+            $table->decimal('price', $precision = 8, $scale = 2);
+            $table->enum('status', ['complete', 'pending', 'cancelled'])->default('pending');
             $table->timestamps();
         });
     }
