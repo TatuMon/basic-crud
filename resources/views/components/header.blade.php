@@ -17,17 +17,11 @@
 
                 <input type="submit" value="register">
 
-                @error('email')
-                    <p class="error-msg">{{ $message }}</p>
-                @enderror
-
-                @error('password')
-                    <p class="error-msg">{{ $message }}</p>
-                @enderror
-
-                @error('password_confirmation')
-                    <p class="error-msg">{{ $message }}</p>
-                @enderror
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class="error-msg">{{ $error }}</p>
+                    @endforeach
+                @endif
             </form>
         </div>
         
@@ -43,13 +37,11 @@
 
                 <input type="submit" value="log in">
 
-                @error('email')
-                    <p class="error-msg">{{ $message }}</p>
-                @enderror
-
-                @error('password')
-                    <p class="error-msg">{{ $message }}</p>
-                @enderror
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class="error-msg">{{ $error }}</p>
+                    @endforeach
+                @endif
             </form>
         </div>
     @endauth
