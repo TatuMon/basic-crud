@@ -33,11 +33,12 @@ header .header-form input {
   font-size: 1rem;
 }
 
-button {
+.header-btn {
   font-weight: bolder;
   font-size: 1.5rem;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 main {
@@ -70,7 +71,7 @@ main {
 
 #list {
   width: 80vw;
-  margin: 10px auto;
+  margin: 0px auto;
   border-collapse: separate;
 }
 #list .list-item {
@@ -108,7 +109,7 @@ main {
   font-size: 1.5rem;
   width: 3em;
 }
-#list .list-item .item-delete {
+#list .list-item .item-delete, #list .list-item .item-edit {
   width: 2em;
   font-size: 2rem;
 }
@@ -123,5 +124,8 @@ main {
 
   #list {
     width: 100vw;
+  }
+  #list * {
+    font-size: 1rem !important;
   }
 }

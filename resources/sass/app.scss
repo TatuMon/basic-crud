@@ -39,11 +39,12 @@ header{
     }
 }
 
-button{
+.header-btn{
     font-weight: bolder;
     font-size: 1.5rem;
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 main{
@@ -77,9 +78,13 @@ main{
     }
 }
 
+.item-edit{
+    @extend .item-delete;
+}
+
 #list{
     width: 80vw;
-    margin: 10px auto;
+    margin: 0px auto;
     border-collapse: separate;
 
     .list-item{
@@ -145,5 +150,9 @@ main{
 
     #list{
         width: 100vw;
+        
+        *{
+            font-size: 1rem !important;
+        }
     }
 }

@@ -3,7 +3,7 @@
     @auth
         <form id="create-form">
             @csrf
-            <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required>
+            <input type="text" maxlength="20" name="name" placeholder="Name" value="{{ old('name') }}" required>
             <input type="number" max="999999.99" step=".01" name="price" placeholder="Price" value="{{ old('price') }}">
             <input type="submit" value="create">
         </form>
@@ -14,6 +14,6 @@
             @endforeach
         </table>
     @else
-        <!-- ADD TEMPORARY LIST IF NOT LOGGED IN -->
+        <h2 style="text-align: center">Login to start creating your grocery list</h2>
     @endauth
 </x-layout>

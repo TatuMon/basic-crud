@@ -3,7 +3,7 @@
         <a href="/logout">Log Out</a>
     @else
         <div id="register" x-data="{show : false}" @click.away="show = false">
-            <button @click="show = !show">Register</button>
+            <button @click="show = !show" class="header-btn">Register</button>
             <form action="/register" method="POST" id="register-form" class="header-form" x-show="show">
                 @csrf
                 <label for="email">e-mail</label>
@@ -26,7 +26,7 @@
         </div>
         
         <div id="login" x-data="{show : false}" @click.away="show = false">
-            <button @click="show = !show">Log In</button>
+            <button @click="show = !show" class="header-btn">Log In</button>
             <form action="/login" method="POST" id="login-form" class="header-form" x-show="show">
                 @csrf
                 <label for="email">email</label>

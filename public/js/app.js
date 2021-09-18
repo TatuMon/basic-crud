@@ -2070,6 +2070,8 @@ __webpack_require__(/*! ./delete */ "./resources/js/delete.js");
 
 __webpack_require__(/*! ./change-status */ "./resources/js/change-status.js");
 
+__webpack_require__(/*! ./editing */ "./resources/js/editing.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2183,8 +2185,10 @@ $('#create-form').on('submit', function (e) {
     success: function success(response) {
       $("input[name='price']").val('');
       response = JSON.parse(response);
-      console.log(_typeof(response.price));
-      $('#list').prepend("\n                <tr class=\"list-item\" data-item=\"".concat(response.id, "\">\n                    <td class=\"item-status\" data-status=\"").concat(response.status, "\"><i class=\"fas fa-clock\"></i></td>\n                    <td class=\"item-name\">").concat(response.name, "</td>\n                    <td class=\"item-price\">").concat(response.price ? '$' + parseFloat(response.price).toFixed(2) : '', "</td>\n                    <td class=\"item-delete\"><i class=\"far fa-trash-alt delete-item\"></i></td>\n                </tr>\n            "));
+      console.log(_typeof(response.price)); //Add created item to items list
+
+      $('#list').prepend("\n                <tr class=\"list-item\" data-item=\"".concat(response.id, "\">\n                    <td class=\"item-status\" data-status=\"").concat(response.status, "\"><i class=\"fas fa-clock\"></i></td>\n                    <td class=\"item-name\">").concat(response.name, "</td>\n                    <td class=\"item-price\">").concat(response.price ? '$' + parseFloat(response.price).toFixed(2) : '', "</td>\n                    <td class=\"item-delete\"><i class=\"far fa-trash-alt delete-item\"></i></td>\n                    <td class=\"item-edit\"><i class=\"fas fa-pen\"></i></td>\n                </tr>\n            ")); //Add event handler on the delete button of the created item
+
       $('.delete-item').on('click', function () {
         var itemContainer = $(this).parents('tr.list-item');
         var itemID = itemContainer.attr('data-item');
@@ -2231,6 +2235,30 @@ $('.delete-item').on('click', function () {
     }
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/editing.js":
+/*!*********************************!*\
+  !*** ./resources/js/editing.js ***!
+  \*********************************/
+/***/ (() => {
+
+$('#edit-list').on('click', startEdit);
+
+function startEdit() {
+  //changes input bla bla
+  $(this).html('finish edit');
+  $(this).off('click').on('click', finishEdit);
+}
+
+function finishEdit() {
+  $(this).find('#edit-form').on('submit', function (e) {
+    e.preventDefault(); //submit data
+  });
+  $(this).html('edit list');
+  $(this).off('click').on('click', startEdit);
+}
 
 /***/ }),
 
