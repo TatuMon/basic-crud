@@ -18,7 +18,6 @@ $('#create-form').on('submit', function(e){
                     <td class="item-name">${response.name}</td>
                     <td class="item-price">${response.price ? '$'+parseFloat(response.price).toFixed(2) : ''}</td>
                     <td class="item-delete"><i class="far fa-trash-alt delete-item"></i></td>
-                    <td class="item-edit"><i class="fas fa-pen"></i></td>
                 </tr>
             `);
 
